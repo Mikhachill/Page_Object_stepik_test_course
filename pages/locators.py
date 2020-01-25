@@ -22,4 +22,8 @@ class ProductPageLocators():
     #LOGIN_LINK_REGISTRATION_PASSWORD = (By.CSS_SELECTOR, ".form-control#id_registration-password1")
     #LOGIN_LINK__REGISTRATION_PASSWORD_REPEAT = (By.CSS_SELECTOR, ".form-control#id_registration-password2")
     
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
     
