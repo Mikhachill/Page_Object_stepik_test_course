@@ -1,16 +1,14 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+from .locators import BasketPageLocators
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import time
 
-class ProductPage(BasePage):
-
-    def should_not_to_be_succes_message(self):
-         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), (
-               "Message is presented, but should not be") 
-
+class ProductPage(BasePage):    
+        
+       
     def should_not_to_be_present(self):
          assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), (
                "Message is presented, but should not be")
@@ -19,10 +17,6 @@ class ProductPage(BasePage):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), (
                "Message do not disappear, but it should be ")
 
-    def should_not_be_created(self):
-        not_created=self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE)
-        assert not_created , (
-               "Message should not be, but it exist ")
     
     def should_be_in_product_page(self):
         button_basket=self.is_element_present(*ProductPageLocators.BASKET_BUTTON)
@@ -30,13 +24,13 @@ class ProductPage(BasePage):
 
     def should_be_clickable_basket_button(self):
         button = self.browser.find_element(*ProductPageLocators.BASKET_BUTTON)
-     # Ждем явным ожиданием и нажимаем кнопку Add to basket
+     # Ждем явным ожиданием 
         button = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.btn.btn-lg.btn-primary.btn-add-to-basket")))
-
+     # нажимаем кнопку Add to basket
         button.click()
         
         time.sleep(1)
-        
+    
     def should_be_message_about_adding(self):
 # Сначала проверяем, что элементы присутствуют на странице
         assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), (
