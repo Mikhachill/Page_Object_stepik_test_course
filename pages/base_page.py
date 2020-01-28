@@ -1,5 +1,5 @@
 from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException # в начале файла для формы ответы (только для курса)
+from selenium.common.exceptions import NoAlertPresentException
 import time
 import math
 from selenium.common.exceptions import TimeoutException
@@ -19,17 +19,13 @@ class BasePage():
         except (NoSuchElementException):
             assert False, "Have no login page link "  
         self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
-            
-    
-        
+                
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
     
-
     def open(self):
         self.browser.get(self.url)
-
-        
+     
 #будет ждать 4 секунды, пока элемент не исчезнет, если элемент не исчезает
 #в пределах timeout=4 тогда выдаст ошибку.     
     def is_disappeared(self, how, what, timeout=5):
@@ -51,7 +47,6 @@ class BasePage():
                 return True
         return False
  
-
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
