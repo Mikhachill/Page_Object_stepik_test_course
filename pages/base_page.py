@@ -32,7 +32,7 @@ class BasePage():
         
 #будет ждать 4 секунды, пока элемент не исчезнет, если элемент не исчезает
 #в пределах timeout=4 тогда выдаст ошибку.     
-    def is_disappeared(self, how, what, timeout=3):
+    def is_disappeared(self, how, what, timeout=5):
         #WebDriver ждёт 4 секунды и делает запросы каждую секунду
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException).\
@@ -58,8 +58,17 @@ class BasePage():
         except (NoSuchElementException):
             return False
         return True
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON),("User icon is not presented,probably unauthorised user")
+
+ 
+ 
+        
+        
     
-  
+
+   
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -75,6 +84,8 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+        
 
     
     

@@ -18,7 +18,7 @@ class ProductPage(BasePage):
                "Message do not disappear, but it should be ")
 
     
-    def should_be_in_product_page(self):
+    def should_be_basket_button_in_product_page(self):
         button_basket=self.is_element_present(*ProductPageLocators.BASKET_BUTTON)
         assert button_basket==True, "Button is not presented"
 
