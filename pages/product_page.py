@@ -20,9 +20,9 @@ class ProductPage(BasePage):
         assert button_basket==True, "Button is not presented"
 
     def should_be_clickable_basket_button(self):
-        button = self.browser.find_element(*ProductPageLocators.BASKET_BUTTON)
+        
      # Ждем явным ожиданием 
-        button = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.btn.btn-lg.btn-primary.btn-add-to-basket")))
+        button = WebDriverWait(self.browser, 5).until(EC.element_to_be_clickable((ProductPageLocators.BASKET_BUTTON)))
      # нажимаем кнопку Add to basket
         button.click()
         
